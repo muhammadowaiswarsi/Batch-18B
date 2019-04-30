@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Index</td>
+                <td>Name</td>
+                <td>Class</td>
+            </tr>
+        </thead>
+        <tbody id='tbody'></tbody>
+    </table>
+</body>
+
+<script>
+        var ref = document.getElementById('tbody')
+        var studentsId = [1, 2, 3, 4, 5];
+        var studentsName = ["Hammad", "Sohail", "Sana", "Amjad", "Saleem"];
+        var studentsClass = ["CMAD", "CMAD", "CMAD", "CMAD", "CMAD"];
+
+        for (let i = 0; i < studentsName.length; i++) {
+            var createTr = document.createElement('tr');
+            createTr.setAttribute('id', i);
+
+            var createTdID = document.createElement('td');
+            var idNode = document.createTextNode(studentsId[i])
+            createTdID.appendChild(idNode);
+
+            var createTdName = document.createElement('td');
+            var nameNode = document.createTextNode(studentsName[i])
+            createTdName.appendChild(nameNode);
+            
+            var createTdClass = document.createElement('td');
+            var classNode = document.createTextNode(studentsClass[i])
+            createTdClass.appendChild(classNode);
+
+            var createTdDeleteButton = document.createElement('td');
+            var buttonNode = document.createElement('button')
+            buttonNode.addEventListener('click', function () {
+        
+                DeleteData(i)
+            })
+            buttonNode.innerHTML = 'DELETE'
+            createTdDeleteButton.appendChild(buttonNode);
+
+            // var createTdEditButton = document.createElement('td');
+            // var buttonEditNode = document.createElement('button')
+            // buttonEditNode.innerHTML = 'EDIT'
+            // createTdEditButton.appendChild(buttonEditNode);
+
+            createTr.appendChild(createTdID);
+            createTr.appendChild(createTdName);
+            createTr.appendChild(createTdClass);
+            createTr.appendChild(createTdDeleteButton);
+            // createTr.appendChild(createTdEditButton);
+
+            ref.appendChild(createTr)
+        }
+
+    function DeleteData(id){
+        console.log(id)
+        var asd = document.getElementById(id);
+        asd.parentNode.removeChild(asd)
+        
+
+    }
+</script>
+
+</html>
